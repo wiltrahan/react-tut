@@ -3,47 +3,51 @@ console.log("App.js is running.");
 const app = {
   title: 'Indecision App',
   subtitle: 'My First App',
-  options: ['One', 'Two']
+  options: []
 };
 
-//JSX - JavaScript XML
-const template = (
-  <div>
-    <h1>{app.title.toUpperCase()}</h1> 
-    {app.subtitle && <p>{app.subtitle}</p>}
-    <p>{app.options.length > 0 ? 'Here are your options: ' + 
-      app.options[0] + ', ' + app.options[1] : 'No options available.'}
-    </p>
-
-  </div>
-);
-
-let count = 0;
-const addOne = () => {
-  count++;
-  renderCounterApp();
+//let options = 0;
+const onFormSubmit = (e) => {
+  e.preventDefault();
+  const option = e.target.elements.option.value;
+  if(option) {
+    app.options.push(option);
+    //options++;
+    e.target.elements.option.value = '';
+    renderOptionCount();
+   
+  }
 };
-const minusOne = () => {
-  count--;
-  renderCounterApp();
+
+const remove = () => {
+  app.options = [];
+  renderOptionCount();
 };
-const reset = () => {
-  count = 0;
-  renderCounterApp();
-}
+
 
 const appRoot = document.getElementById('app');
 
-const renderCounterApp = () => {
-  const templateTwo = (
+const renderOptionCount = () => {
+  const template = (
     <div>
-      <h1>Count: {count}</h1>
-      <button onClick={addOne}>+1</button>
-      <button onClick={minusOne}>-1</button>
-      <button onClick={reset}>reset</button>
+      <h1>{app.title.toUpperCase()}</h1> 
+      {app.subtitle && <p>{app.subtitle}</p>}
+      <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+      <p>{app.options.length}</p>
+      <button onClick={remove}>Remove All</button>
+      <ol>
+        <li>Item One</li>
+        <li>Item Two</li>
+      </ol>
+      <form onSubmit={onFormSubmit}>
+        <input type="text" name="option"/>
+        <button>Add Option</button>
+      </form>
     </div>
   );
-  ReactDOM.render(templateTwo, appRoot);
+  ReactDOM.render(template, appRoot);
 };
 
-renderCounterApp();
+renderOptionCount();
+
+
