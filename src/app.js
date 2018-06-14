@@ -24,7 +24,6 @@ const remove = () => {
   renderOptionCount();
 };
 
-
 const appRoot = document.getElementById('app');
 
 const renderOptionCount = () => {
@@ -36,8 +35,11 @@ const renderOptionCount = () => {
       <p>{app.options.length}</p>
       <button onClick={remove}>Remove All</button>
       <ol>
-        <li>Item One</li>
-        <li>Item Two</li>
+        {
+          app.options.map((option) => {
+            return <li key={option}>Option: {option}</li>;
+          })
+        }
       </ol>
       <form onSubmit={onFormSubmit}>
         <input type="text" name="option"/>
