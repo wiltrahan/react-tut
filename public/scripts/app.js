@@ -1,33 +1,70 @@
 'use strict';
 
-// arguments object - no longer bound with arrow functions
+console.log("App.js is running.");
 
-var add = function add(a, b) {
-  return a + b;
+var app = {
+  title: 'Indecision App',
+  subtitle: 'My First App',
+  options: ['One', 'Two']
 };
 
-// this keyword - no longer bound
+//JSX - JavaScript XML
+var template = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    app.title.toUpperCase()
+  ),
+  app.subtitle && React.createElement(
+    'p',
+    null,
+    app.subtitle
+  ),
+  React.createElement(
+    'p',
+    null,
+    app.options.length > 0 ? 'Here are your options: ' + app.options[0] + ', ' + app.options[1] : 'No options available.'
+  )
+);
 
-var user = {
-  name: 'Willis',
-  cities: ['Fall River', 'North Providence', 'Pawtucket'],
-  printPlacesLived: function printPlacesLived() {
-    var _this = this;
-
-    return this.cities.map(function (city) {
-      return _this.name + ' has lived in ' + city;
-    });
-  }
+var count = 0;
+var addOne = function addOne() {
+  console.log("addOne");
 };
-console.log(user.printPlacesLived());
-console.log(user.cities);
-
-var multiplier = {
-  numbers: [4, 6, 8],
-  multiply: function multiply(multiplyBy) {
-    return this.numbers.map(function (number) {
-      return number * multiplyBy;
-    });
-  }
+var minusOne = function minusOne() {
+  console.log("minusOne");
 };
-console.log(multiplier.multiply(4));
+var reset = function reset() {
+  console.log("reset");
+};
+
+var templateTwo = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    'Count: ',
+    count
+  ),
+  React.createElement(
+    'button',
+    { onClick: addOne },
+    '+1'
+  ),
+  React.createElement(
+    'button',
+    { onClick: minusOne },
+    '-1'
+  ),
+  React.createElement(
+    'button',
+    { onClick: reset },
+    'reset'
+  )
+);
+
+var appRoot = document.getElementById('app');
+ReactDOM.render(templateTwo, appRoot);
