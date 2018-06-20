@@ -69,52 +69,37 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__person_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__person_js__ = __webpack_require__(2);
 //import './utils.js';
-
+// import subtract, { square, add } from './utils.js';
 
 
 console.log('app.js running');
 
-console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* square */](4));
-console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */](5, 10));
+// console.log(square(4));
+// console.log(add(5, 10));
+// console.log(subtract(20, 2));
 
-console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](20));
-console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](20));
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-console.log('utils.js is running');
-
-const square = (x) => x * x;
-/* harmony export (immutable) */ __webpack_exports__["b"] = square;
-
-
-const add = (a, b) => a + b;
-/* harmony export (immutable) */ __webpack_exports__["a"] = add;
-
-
-// or this way export { square, add };
+console.log(__WEBPACK_IMPORTED_MODULE_0__person_js__["c" /* isAdult */](20));
+console.log(__WEBPACK_IMPORTED_MODULE_0__person_js__["a" /* canDrink */](20));
+console.log(__WEBPACK_IMPORTED_MODULE_0__person_js__["b" /* default */](55));
 
 /***/ }),
+/* 1 */,
 /* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 
 const isAdult = (age) => age >= 18;
-/* harmony export (immutable) */ __webpack_exports__["b"] = isAdult;
+/* harmony export (immutable) */ __webpack_exports__["c"] = isAdult;
 
 
 const canDrink = (age) => age >= 21 ? "Can drink" : "Cannot drink";
 /* harmony export (immutable) */ __webpack_exports__["a"] = canDrink;
 
 
-
+/* harmony default export */ __webpack_exports__["b"] = ((age) => age >= 65);
 
 /***/ })
 /******/ ]);
