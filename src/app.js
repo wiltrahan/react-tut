@@ -6,7 +6,7 @@ class IndecisionApp extends React.Component {
     this.handleAddOption = this.handleAddOption.bind(this);
     this.handleDeleteOption = this.handleDeleteOption.bind(this);
     this.state = {
-      options : props.options
+      options : []
     }
   };
   componentDidMount() {
@@ -19,9 +19,7 @@ class IndecisionApp extends React.Component {
       }
     } catch(e) {
       //do nothing at all
-    }
-
-     
+    }     
   }
   componentDidUpdate(prevProps, prevState) {
     if(prevState.options.length !== this.state.options.length) {
@@ -29,13 +27,10 @@ class IndecisionApp extends React.Component {
       localStorage.setItem('options', json);
       console.log('saving data');    
     }
-
-    
   }
   componentWillUnmount() {
     console.log('componentWillUnmount');
   }
-  
   
   handleDeleteOptions() {
     this.setState(() => ({ options: [] }));
@@ -86,10 +81,6 @@ class IndecisionApp extends React.Component {
       </div>
     );
   }
-}
-
-IndecisionApp.defaultProps = {
-  options: []
 }
 
 const Header = (props) => {
