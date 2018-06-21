@@ -66,12 +66,10 @@ class IndecisionApp extends React.Component {
       options: prevState.options.concat(option)
     }));
   }
-  render() {
-    const subtitle = 'Put your life in the hands of a computer'; 
-    
+  render() {  
     return (
       <div>
-        <Header subtitle={subtitle} />
+        <Header />
         <Action 
           hasOptions={this.state.options.length > 0} 
           handlePick={this.handlePick}
